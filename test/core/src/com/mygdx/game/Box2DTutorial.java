@@ -21,9 +21,6 @@ public class Box2DTutorial extends Game {
 	public final static int PREFERENCES = 1;
 	public final static int APPLICATION = 2;
 	public final static int ENDGAME = 3;
-
-
-
 	public AppPreferences getPreferences() {
 		return this.preferences;
 	}
@@ -37,7 +34,7 @@ public class Box2DTutorial extends Game {
 		assMan.queueAddMusic();
 		assMan.manager.finishLoading();
 		playingSong = assMan.manager.get("music/Vitas_7th_Element.mp3");
-		playingSong.play();
+		//playingSong.play();
 	}
 
 	@Override

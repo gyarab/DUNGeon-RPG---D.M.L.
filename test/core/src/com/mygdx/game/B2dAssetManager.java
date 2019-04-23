@@ -10,7 +10,7 @@ public class B2dAssetManager {
     public final AssetManager manager = new AssetManager();
 
     public final String playerImage = "images/player.png";
-    public final String enemyImage = "images/player.png";
+    public final String enemyImage = "images/enemy.png";
     public final String boingSound = "sounds/boing.wav";
     public final String pingSound = "sounds/ping.wav";
 

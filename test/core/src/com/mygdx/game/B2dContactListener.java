@@ -30,13 +30,13 @@ public class B2dContactListener implements ContactListener {
             return;
         }
 
-        if(fa.getBody().getType() == BodyDef.BodyType.StaticBody){
+        /*if(fa.getBody().getType() == BodyDef.BodyType.StaticBody){
             this.shootUpInAir(fa, fb);
         }else if(fb.getBody().getType() == BodyDef.BodyType.StaticBody){
             this.shootUpInAir(fb, fa);
         }else{
 
-        }
+        }*/
     }
 
     private void shootUpInAir(Fixture staticFixture, Fixture otherFixture){

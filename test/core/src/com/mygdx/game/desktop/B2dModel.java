@@ -19,33 +19,35 @@ public class B2dModel {
     private B2dAssetManager assMan;
     public Body player;
     private Body water;
+    public Body enemy;
     private OrthographicCamera camera;
     private Sound ping;
     private Sound boing;
+    private PlayerEntity playerEntity;
 
     public static final int BOING_SOUND = 0;
     public static final int PING_SOUND = 1;
 
     public boolean isSwimming = false;
+    public B2dModel(){
+
+    }
 
     public B2dModel(KeyboardController cont,  OrthographicCamera cam, B2dAssetManager assetManager){
         assMan = assetManager;
         camera=cam;
         controller = cont;
-        world = new World(new Vector2(0,-10f), true);
+        world = new World(new Vector2(0,0), true);
+        world.clearForces();
+
         world.setContactListener(new B2dContactListener(this));
         createFloor();
-        //createObject();
-        //createMovingObject();
 
         BodyFactory bodyFactory = BodyFactory.getInstance(world);
-
-        player = bodyFactory.makeBoxPolyBody(1, 1, 2, 2, BodyFactory.RUBBER, BodyDef.BodyType.DynamicBody,false);
-
-        water =  bodyFactory.makeBoxPolyBody(1, -8, 40, 16, BodyFactory.RUBBER, BodyDef.BodyType.StaticBody,false);
-        water.setUserData("IAMTHESEA");
-
-        bodyFactory.makeAllFixturesSensors(water);
+        PlayerEntity playerEntity = new PlayerEntity();
+        player = playerEntity.getPlayer();
+                //bodyFactory.makeBoxPolyBody(1, 1, 2, 2, BodyFactory.RUBBER, BodyDef.BodyType.DynamicBody,true);
+        enemy = bodyFactory.makeBoxPolyBody(4, 1, 2, 2, BodyFactory.RUBBER, BodyDef.BodyType.StaticBody,false);
 
         assMan.queueAddSounds();
 
@@ -132,8 +134,8 @@ public class B2dModel {
     }
 
     public boolean pointIntersectsBody(Body body, Vector2 mouseLocation){
-        Vector3 mousePos = new Vector3(mouseLocation,0); //convert mouseLocation to 3D position
-        camera.unproject(mousePos); // convert from screen potition to world position
+        Vector3 mousePos = new Vector3(mouseLocation,0);
+        camera.unproject(mousePos);
         if(body.getFixtureList().first().testPoint(mousePos.x, mousePos.y)){
             return true;
         }
