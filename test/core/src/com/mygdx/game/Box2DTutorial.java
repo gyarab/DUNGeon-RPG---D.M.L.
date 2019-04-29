@@ -2,7 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.audio.Music;
-import com.mygdx.game.desktop.AppPreferences;
 import com.mygdx.game.views.*;
 
 

@@ -21,6 +21,7 @@ public class PreferencesScreen implements Screen {
     private Label volumeSoundLabel;
     private Label musicOnOffLabel;
     private Label soundOnOffLabel;
+    private Skin skin;
 
 
     public PreferencesScreen(Box2DTutorial box2DTutorial){
@@ -34,7 +35,8 @@ public class PreferencesScreen implements Screen {
     public void show() {
 
         Gdx.input.setInputProcessor(stage);
-        Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
+
+        skin = parent.assMan.manager.get("skin/glassy-ui.json");
 
         Table table = new Table();
         table.setFillParent(true);

@@ -12,6 +12,7 @@ public class KeyboardController implements InputProcessor {
     public boolean right;
     public boolean up;
     public boolean down;
+    public boolean space;
     public boolean isMouse1Down, isMouse2Down,isMouse3Down;
     public boolean isDragged;
     public Vector2 mouseLocation = new Vector2(0,0);
@@ -37,6 +38,11 @@ public class KeyboardController implements InputProcessor {
             case Keys.S:
                 down = true;
                 keyProcessed = true;
+                break;
+            case Keys.SPACE:
+                space = true;
+                keyProcessed = true;
+
         }
         return keyProcessed;
     }
@@ -60,12 +66,17 @@ public class KeyboardController implements InputProcessor {
             case Keys.S:
                 down = false;
                 keyProcessed = true;
+                break;
+            case Keys.SPACE:
+                space = false;
+                keyProcessed = true;
         }
         return keyProcessed;
     }
 
     @Override
     public boolean keyTyped(char character) {
+
         return false;
     }
 
